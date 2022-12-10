@@ -54,7 +54,7 @@ resource "aws_security_group" "ec2_sg" {
 }
 
 resource "aws_iam_instance_profile" "instance_profile" {
-  name = join("", [var.name, "-", "iam-instance-profile"])
+  name = join("", [var.name, "-", "ami-0b0dcb5067f052a63"])
   role = var.iam_role_name
 }
 
@@ -71,10 +71,10 @@ resource "aws_instance" "web_server" {
 
   # best practices as per checkov scanner
 
-  # monitoring = true
-  # ebs_optimized = true
-  # root_block_device {
-  # encrypted     = true
-  # }
+  monitoring = true
+  ebs_optimized = true
+  root_block_device {
+  encrypted     = true
+  }
 
 }
